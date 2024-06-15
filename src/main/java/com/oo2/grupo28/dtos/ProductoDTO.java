@@ -1,6 +1,5 @@
 package com.oo2.grupo28.dtos;
 
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
