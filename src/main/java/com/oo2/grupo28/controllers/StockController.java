@@ -63,10 +63,10 @@ public class StockController {
 	}
 	
 	@GetMapping("/by_producto/{producto_name}")
-	public ModelAndView getByDegreeName(@PathVariable("producto_name") String productoName) {
-		ModelAndView mAV = new ModelAndView(ViewRouteHelper.PERSON_INDEX);
+	public ModelAndView getByNombreProducto(@PathVariable("producto_name") String productoName) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.STOCK_INDEX);
 		try {
-			mAV.addObject("persons", stockService.findByNombreProducto(productoName));
+			mAV.addObject("stocks", stockService.findByNombreProducto(productoName));
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
