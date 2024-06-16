@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -73,7 +74,27 @@ public class StockController {
 		}
 		return mAV;
 	}
+	
+	@GetMapping("/informe")
+	public ModelAndView verInforme(@RequestParam("nombreProducto") String nombreProducto) {
+		ModelAndView mAV = new ModelAndView(ViewRouteHelper.VISTA_INFORMES);
+		 
+        int cantidadActual;
+		try {
+			// Obtener la cantidad actual del producto especificado
+			cantidadActual = stockService.getCantidadActual(nombreProducto);
+			 // Agregar los datos al ModelAndView
+	        mAV.addObject("cantidadActual", cantidadActual);
+	        mAV.addObject("nombreProducto", nombreProducto);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
 
+       
+		return mAV;
+	}
+	
 	/*@PostMapping("/update")
 	public RedirectView update(@ModelAttribute("person") StockDTO stockDTO) throws Exception {
 		Stock stockToUpdate = modelMapper.map(stockService.findById(stockDTO.getId()).get(), Stock.class);

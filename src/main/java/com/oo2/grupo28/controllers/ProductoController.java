@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -83,7 +84,7 @@ public class ProductoController {
 		return new RedirectView(ViewRouteHelper.PRODUCTO_ROOT);
 	}
 	
-	/*@PostMapping("/new")
+	@PostMapping("/new/estenova")
 	public ModelAndView newproducto(@Valid @ModelAttribute("producto") ProductoDTO producto, BindingResult bindingResult) {
 		ModelAndView mV = new ModelAndView();
 		if (bindingResult.hasErrors()) {
@@ -93,6 +94,8 @@ public class ProductoController {
 			mV.addObject("producto", producto);
 		}
 		return mV;
-	}*/
+	}
 }
+
+
 
