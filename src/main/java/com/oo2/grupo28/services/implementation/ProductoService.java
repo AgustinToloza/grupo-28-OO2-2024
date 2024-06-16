@@ -30,19 +30,18 @@ public class ProductoService implements IProductoService{
 	}
 	
 	@Override
-	public ProductoDTO insertOrUpdate(ProductoDTO productoModel) {
-		Producto producto = productoRepository.save(modelMapper.map(productoModel, Producto.class));
-		return modelMapper.map(producto, ProductoDTO.class);
+	public Producto insertOrUpdate(Producto producto) {
+		return productoRepository.save(producto);
 	}
 	
 	@Override
 	public boolean remove(int idProducto) {
-		try {
+		boolean seBorro = false;
+		if(productoRepository.findById(idProducto).isPresent()) {
 			productoRepository.deleteById(idProducto);
-			return true;
-		}catch(Exception e){
-			return false;
+			seBorro = true;
 		}
+		return seBorro;
 	}
 	
 	@Override
