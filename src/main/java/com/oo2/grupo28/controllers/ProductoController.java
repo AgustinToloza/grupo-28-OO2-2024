@@ -84,17 +84,6 @@ public class ProductoController {
 		return new RedirectView(ViewRouteHelper.PRODUCTO_ROOT);
 	}
 	
-	@PostMapping("/new/estenova")
-	public ModelAndView newproducto(@Valid @ModelAttribute("producto") ProductoDTO producto, BindingResult bindingResult) {
-		ModelAndView mV = new ModelAndView();
-		if (bindingResult.hasErrors()) {
-			mV.setViewName(ViewRouteHelper.PRODUCTO_NEW);
-		} else {
-			mV.setViewName(ViewRouteHelper.PRODUCTO_NEW);
-			mV.addObject("producto", producto);
-		}
-		return mV;
-	}
 }
 
 
