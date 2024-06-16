@@ -47,5 +47,15 @@ public class Stock {
 		this.producto = producto;
 		this.alertaReabastecimiento = alertaReabastecimiento;
 	}
+
+	public int getCantidadActual() {
+		return cantidadActual;
+	}
+
+	public void setCantidadActual(int cantidadActual) {
+		this.cantidadActual = cantidadActual;
+	}
+	
+	
 	
 }

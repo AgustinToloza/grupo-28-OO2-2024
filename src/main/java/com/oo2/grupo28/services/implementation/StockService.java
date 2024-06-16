@@ -53,4 +53,10 @@ public class StockService implements IStockService{
 				.stream()
 				.map(stock -> modelMapper.map(stock, StockDTO.class));
 	}
+	@Override
+	 public int getCantidadActual(String nombreProducto) throws Exception {
+	        return stockRepository.findByNombreProducto(nombreProducto).stream()
+	                .mapToInt(Stock::getCantidadActual)
+	                .sum();
+	    }
 }

@@ -20,4 +20,5 @@ public interface IStockService {
 	
 	public StockDTO findByNombreProducto(String nombre) throws Exception;
 	
+	public int getCantidadActual(String nombreProducto) throws Exception;
 }

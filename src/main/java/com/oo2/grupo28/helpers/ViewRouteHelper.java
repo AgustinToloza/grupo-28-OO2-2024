@@ -43,4 +43,5 @@ public class ViewRouteHelper {
 	public final static String ROUTE = "/index";
 	public final static String PRODUCTO_ROOT = "/productos/";
 	public final static String STOCK_ROOT = "/stocks/";
+	public final static String VISTA_INFORMES="/vista_informes";
 }
