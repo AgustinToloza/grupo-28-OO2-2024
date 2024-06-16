@@ -12,6 +12,8 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
@@ -31,31 +33,34 @@ public class Compra {
 	private int cantidadComprada;
 	
 	private double precioVenta;
-	@OneToMany(mappedBy = "compra", fetch = FetchType.LAZY)
-	private Set<Producto> productos=new HashSet<>();;
 	
-	@OneToMany(mappedBy = "compra", fetch = FetchType.LAZY)
-	private User usuario;
+	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+	@JoinColumn(name = "producto_id")
+	private Set<Producto> productos=new HashSet<>();
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "user_id", nullable = false)
+	private User user;
 
 	public Compra(int id, LocalDate fechaCompra, int cantidadComprada, double precioVenta, Set<Producto> productos,
-			User usuario) {
+			User user) {
 		super();
 		this.id = id;
 		this.fechaCompra = fechaCompra;
 		this.cantidadComprada = cantidadComprada;
 		this.precioVenta = precioVenta;
 		this.productos = productos;
-		this.usuario = usuario;
+		this.user = user;
 	}
 
 	public Compra(LocalDate fechaCompra, int cantidadComprada, double precioVenta, Set<Producto> productos,
-			User usuario) {
+			User user) {
 		super();
 		this.fechaCompra = fechaCompra;
 		this.cantidadComprada = cantidadComprada;
 		this.precioVenta = precioVenta;
 		this.productos = productos;
-		this.usuario = usuario;
+		this.user = user;
 	}
 	
 	
