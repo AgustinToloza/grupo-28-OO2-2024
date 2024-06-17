@@ -34,6 +34,6 @@ public class UserController {
     public String loginCheck(Authentication authentication) {
 		return "redirect:/home/index";
         //return "redirect:/login?error";
-    }
+  }
 	
 }
