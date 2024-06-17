@@ -23,7 +23,8 @@ public class ViewRouteHelper {
 	
 	//HOME
 	public final static String INDEX = "home/index";
-	public final static String HELLO = "home/hello";
+	public final static String USER_INDEX = "user/index";
+	public final static String ADMIN_INDEX = "admin/index";
 	
 	//PRODUCTO
 	public final static String PRODUCTO_INDEX = "producto/index";
@@ -49,7 +50,7 @@ public class ViewRouteHelper {
 	public final static String USER_LOGOUT = "user/logout";
 
 	/**** Redirects ****/
-	public final static String ROUTE = "/index";
+	public final static String ROUTE = "/home/index";
 	public final static String PRODUCTO_ROOT = "/productos/";
 	public final static String STOCK_ROOT = "/stocks/";
 	public final static String PEDIDO_ROOT = "/pedidos/";

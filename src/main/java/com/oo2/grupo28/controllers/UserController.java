@@ -1,5 +1,11 @@
 package com.oo2.grupo28.controllers;
 
+import java.util.Collection;
+
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,8 +31,9 @@ public class UserController {
 	}
 
 	@GetMapping("/loginsuccess")
-	public String loginCheck() {
-		return "redirect:/index";
-	}
+    public String loginCheck(Authentication authentication) {
+		return "redirect:/home/index";
+        //return "redirect:/login?error";
+    }
 	
 }

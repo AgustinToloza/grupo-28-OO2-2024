@@ -1,5 +1,8 @@
 package com.oo2.grupo28.controllers;
 
+import java.util.Collection;
+
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
@@ -11,38 +14,47 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.oo2.grupo28.helpers.ViewRouteHelper;
+import com.oo2.grupo28.services.IProductoService;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/home")
 public class HomeController {
 	
-		//GET Example: SERVER/index
-		@GetMapping("/index")
-		public ModelAndView index() {
-			ModelAndView modelAndView = new ModelAndView(ViewRouteHelper.INDEX);
-			User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-			modelAndView.addObject("username", user.getUsername());
-			return modelAndView;
-		}
+	private IProductoService productoService;
 
-		//GET Example: SERVER/hello?name=someName
-		@GetMapping("/hello")
-		public ModelAndView helloParams1(@RequestParam(name="name", required=false, defaultValue="null") String name) {
-			ModelAndView mV = new ModelAndView(ViewRouteHelper.HELLO);
-			mV.addObject("name", name);
-			return mV;
-		}
+	public HomeController(IProductoService productoService) {
+		super();
+		this.productoService = productoService;
+	}
 
-		//GET Example: SERVER/hello/someName
-		@GetMapping("/hello/{name}")
-		public ModelAndView helloParams2(@PathVariable("name") String name) {
-			ModelAndView mV = new ModelAndView(ViewRouteHelper.HELLO);
-			mV.addObject("name", name);
-			return mV;
-		}
+	//GET Example: SERVER/index
+	@GetMapping("/index")
+	public ModelAndView index() {
 
-		@GetMapping("/")
-		public RedirectView redirectToHomeIndex() {
-			return new RedirectView(ViewRouteHelper.ROUTE);
-		}
+		User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Collection<? extends GrantedAuthority> authorities = user.getAuthorities();
+		ModelAndView modelAndView = new ModelAndView();
+
+		for (GrantedAuthority authority : authorities) {
+            if (authority.getAuthority().equals("ROLE_ADMIN")) {
+
+            	modelAndView.setViewName(ViewRouteHelper.ADMIN_INDEX);
+    			modelAndView.addObject("username", user.getUsername());
+
+            } else if (authority.getAuthority().equals("ROLE_USER")) {
+
+            	modelAndView.setViewName(ViewRouteHelper.USER_INDEX);
+    			modelAndView.addObject("username", user.getUsername());
+    			modelAndView.addObject("productos", productoService.getAll());
+            }
+        }
+
+		return modelAndView;
+
+	}
+
+	@GetMapping("/")
+	public RedirectView redirectToHomeIndex() {
+		return new RedirectView(ViewRouteHelper.ROUTE);
+	}
 }
