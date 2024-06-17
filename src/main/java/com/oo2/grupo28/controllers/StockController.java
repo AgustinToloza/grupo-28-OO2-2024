@@ -3,8 +3,6 @@ package com.oo2.grupo28.controllers;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,8 +16,6 @@ import com.oo2.grupo28.helpers.ViewRouteHelper;
 import com.oo2.grupo28.dtos.StockDTO;
 import com.oo2.grupo28.entities.Stock;
 import com.oo2.grupo28.services.IStockService;
-
-import jakarta.validation.Valid;
 
 @Controller
 @PreAuthorize("hasRole('ROLE_ADMIN')")

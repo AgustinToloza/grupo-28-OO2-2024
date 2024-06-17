@@ -4,7 +4,7 @@ public class ViewRouteHelper {
 	/**** Views ****/
 	// ----------VISTAS EJEMPLOS DEL PROFE--------------
 	//DEGREE
-	public final static String DEGREE_INDEX = "degree/index";
+	/*public final static String DEGREE_INDEX = "degree/index";
 	public final static String DEGREE_FORM = "degree/form";
 	public final static String DEGREE_NEW = "degree/new";
 	
@@ -12,7 +12,7 @@ public class ViewRouteHelper {
 	public final static String PERSON_INDEX = "person/index";
 	public final static String PERSON_NEW = "person/new";
 	public final static String PERSON_UPDATE = "person/update";
-	public final static String PERSON_PARTIAL_VIEW = "person/partialPersonView";
+	public final static String PERSON_PARTIAL_VIEW = "person/partialPersonView";*/
 	
 	/**** Redirects ****/
 	/*public final static String ROUTE = "/index";
@@ -36,10 +36,9 @@ public class ViewRouteHelper {
 	public final static String STOCK_NEW = "stock/new";
 	public final static String STOCK_UPDATE = "stock/update";
 	
-	//PEDIDO ---> NO SE PUEDEN BORRAR
+	//PEDIDO ---> NO SE PUEDEN DAR DE BAJA NI MODIFICAR
 	public final static String PEDIDO_INDEX = "pedido/index";
-	public final static String PEDIDO_NEW = "stock/new";
-	public final static String PEDIDO_UPDATE = "stock/update";
+	public final static String PEDIDO_NEW = "pedido/new";
 	
 	//REPORTE
 	public final static String REPORTE_INDEX = "reporte/index";

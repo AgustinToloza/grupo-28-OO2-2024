@@ -1,0 +1,6 @@
+USE `grupo28sistema`;
+INSERT INTO `grupo28sistema`.`user` (`id`, `created_at`, `enabled`, `password`, `updated_at`, `username`) VALUES ('1', CAST('2024-06-15 17:30:00' AS DateTime), b'1', '$2a$10$WfpZx5Aw0pr3ev5jZQJepuA4iNZCRssMiaarAfXJ5fNOVx3T5SIqO', CAST('2024-06-15 17:30:00' AS DateTime), 'user');
+INSERT INTO `grupo28sistema`.`user` (`id`, `created_at`, `enabled`, `password`, `updated_at`, `username`) VALUES ('2', CAST('2024-06-15 17:30:00' AS DateTime), b'1', '$2a$10$pnb/73fCzLsDMGNpbpvUAen43JoDFk8aQwtQQGYfPAGnKAyoXiFcS', CAST('2024-06-15 17:30:00' AS DateTime), 'admin');
+
+INSERT INTO `grupo28sistema`.`user_role` (`id`, `created_at`, `role`, `updated_at`, `user_id`) VALUES ('1', CAST('2024-06-15 17:30:00' AS DateTime), 'ROLE_USER', CAST('2024-06-15 17:30:00' AS DateTime), '1');
+INSERT INTO `grupo28sistema`.`user_role` (`id`, `created_at`, `role`, `updated_at`, `user_id`) VALUES ('2', CAST('2024-06-15 17:30:00' AS DateTime), 'ROLE_ADMIN', CAST('2024-06-15 17:30:00' AS DateTime), '2');

@@ -34,11 +34,6 @@ public class UserController {
     public String loginCheck(Authentication authentication) {
 		return "redirect:/home/index";
         //return "redirect:/login?error";
-    }
-	
-	/*@GetMapping("/loginsuccess")
-	public String loginCheck() {
-		return "redirect:/index";
-	}*/
+  }
 	
 }

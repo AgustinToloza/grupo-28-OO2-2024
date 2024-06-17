@@ -29,13 +29,13 @@ public class ProductoDTO {
 	private Stock stock;
 
 	public ProductoDTO(int id, String nombre, double precio, @Size(min = 2, max = 5) String codigo,
-			boolean activo) {
+			boolean activo, Stock stock) {
 		this.setId(id);
 		this.nombre = nombre;
 		this.precio = precio;
 		this.codigo = codigo;
 		this.activo = activo;
-		this.stock = null;
+		this.stock = stock;
 	}
 	
 	
