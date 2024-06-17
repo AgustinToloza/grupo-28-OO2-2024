@@ -1,5 +1,7 @@
 package com.oo2.grupo28.dtos;
 
+import com.oo2.grupo28.entities.Stock;
+
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -23,6 +25,8 @@ public class ProductoDTO {
 	private String codigo;
 	
 	private boolean activo;
+	
+	private Stock stock;
 
 	public ProductoDTO(int id, String nombre, double precio, @Size(min = 2, max = 5) String codigo,
 			boolean activo) {
@@ -31,6 +35,7 @@ public class ProductoDTO {
 		this.precio = precio;
 		this.codigo = codigo;
 		this.activo = activo;
+		this.stock = null;
 	}
 	
 	

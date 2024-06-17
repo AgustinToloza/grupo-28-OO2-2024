@@ -59,7 +59,7 @@ public class ProductoController {
 		
 		// Si no hay errores, procede con la inserción/actualización del producto
 	    Producto producto = modelMapper.map(productoDTO, Producto.class);
-	    productoService.insertOrUpdate(producto);
+	    productoService.insert(producto);
 	    
 	    // Redirige a la vista principal de productos después de guardar correctamente
 	    return "redirect:" + ViewRouteHelper.PRODUCTO_ROOT;
@@ -88,7 +88,7 @@ public class ProductoController {
 	        productoToUpdate.setPrecio(productoDTO.getPrecio());
 	        productoToUpdate.setCodigo(productoDTO.getCodigo());
 	        productoToUpdate.setActivo(productoDTO.isActivo());
-	        productoService.insertOrUpdate(productoToUpdate);
+	        productoService.update(productoToUpdate);
 	    }
 	    
 	    // Redirige a la vista principal de productos después de actualizar correctamente

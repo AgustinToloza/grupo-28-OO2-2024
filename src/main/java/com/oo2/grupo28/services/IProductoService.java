@@ -11,7 +11,9 @@ public interface IProductoService {
 	
 	public List<Producto> getAll();
 	
-	public Producto insertOrUpdate(Producto producto);
+	public Producto insert(Producto producto);
+	
+	public Producto update(Producto producto);
 	
 	public boolean remove(int idProducto);
 	

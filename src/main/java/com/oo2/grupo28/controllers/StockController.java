@@ -35,7 +35,7 @@ public class StockController {
 		this.stockService = stockService;
 	}
 	
-	@GetMapping("")
+	@GetMapping("/")
 	public ModelAndView index() {
 		ModelAndView mAV = new ModelAndView(ViewRouteHelper.STOCK_INDEX);
 		mAV.addObject("stocks", stockService.getAll());

@@ -24,8 +24,7 @@ public class Stock {
 	
 	private int cantidadCritica;
 
-	@OneToOne(fetch = FetchType.LAZY, optional = false)
-	// normalmente nullable es igual a false, en este caso se deja como true porque el ejemplo es simple
+	@OneToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="producto_id", nullable=false)
 	private Producto producto;
 	
