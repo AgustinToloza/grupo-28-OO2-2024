@@ -1,5 +1,7 @@
 package com.oo2.grupo28.dtos;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,12 +11,15 @@ import lombok.Setter;
 public class ProductoDTO {
 	
 	private int id;
-
+	
+	@NotBlank(message = "El nombre es obligatorio")
 	private String nombre;
-
+	
+	@NotNull(message = "El precio es obligatorio")
 	private double precio;
 	
-	@Size(min=2, max=5)
+	@NotBlank(message = "El código es obligatorio")
+	@Size(min=2, max=5, message = "El código debe tener entre 2 y 5 caracteres")
 	private String codigo;
 	
 	private boolean activo;

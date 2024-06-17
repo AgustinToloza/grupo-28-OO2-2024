@@ -50,10 +50,19 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/new")
-	public RedirectView create(@ModelAttribute("producto") ProductoDTO productoDTO) {
-		Producto producto = modelMapper.map(productoDTO, Producto.class);
-		productoService.insertOrUpdate(producto);
-		return new RedirectView(ViewRouteHelper.PRODUCTO_ROOT);
+	public String create(@Valid @ModelAttribute("producto") ProductoDTO productoDTO, BindingResult bindingResult, Model model) {
+		if(bindingResult.hasErrors()) {
+			// Si hay errores de validación, vuelve a mostrar el formulario con los errores
+			model.addAttribute("producto", productoDTO);
+	        return ViewRouteHelper.PRODUCTO_NEW;
+		}
+		
+		// Si no hay errores, procede con la inserción/actualización del producto
+	    Producto producto = modelMapper.map(productoDTO, Producto.class);
+	    productoService.insertOrUpdate(producto);
+	    
+	    // Redirige a la vista principal de productos después de guardar correctamente
+	    return "redirect:" + ViewRouteHelper.PRODUCTO_ROOT;
 	}
 	
 	@GetMapping("/update/{id}")
@@ -65,17 +74,25 @@ public class ProductoController {
 	}
 	
 	@PostMapping("/update/{id}")
-	public RedirectView update(@PathVariable("id") int id, @ModelAttribute("producto") ProductoDTO productoDTO) throws Exception {
-		Producto productoToUpdate = modelMapper.map(productoService.findById(id).get(), Producto.class);
-		if(productoToUpdate != null ) {
-			productoToUpdate.setId(productoDTO.getId());
-			productoToUpdate.setNombre(productoDTO.getNombre());
-			productoToUpdate.setPrecio(productoDTO.getPrecio());
-			productoToUpdate.setCodigo(productoDTO.getCodigo());
-			productoToUpdate.setActivo(productoDTO.isActivo());
-			productoService.insertOrUpdate(productoToUpdate);
-		}
-		return new RedirectView(ViewRouteHelper.PRODUCTO_ROOT);
+	public String update(@PathVariable("id") int id, @Valid @ModelAttribute("producto") ProductoDTO productoDTO, BindingResult bindingResult, Model model) throws Exception {
+		if (bindingResult.hasErrors()) {
+	        // Si hay errores de validación, vuelve a mostrar el formulario con los errores
+	        model.addAttribute("producto", productoDTO);
+	        return ViewRouteHelper.PRODUCTO_UPDATE;
+	    }
+		
+		// Mapea el producto DTO al producto de la base de datos
+	    Producto productoToUpdate = modelMapper.map(productoService.findById(id).get(), Producto.class);
+	    if (productoToUpdate != null) {
+	        productoToUpdate.setNombre(productoDTO.getNombre());
+	        productoToUpdate.setPrecio(productoDTO.getPrecio());
+	        productoToUpdate.setCodigo(productoDTO.getCodigo());
+	        productoToUpdate.setActivo(productoDTO.isActivo());
+	        productoService.insertOrUpdate(productoToUpdate);
+	    }
+	    
+	    // Redirige a la vista principal de productos después de actualizar correctamente
+	    return "redirect:" + ViewRouteHelper.PRODUCTO_ROOT;
 	}
 	
 	@PostMapping("/delete/{id}")
