@@ -10,10 +10,10 @@ public interface IPedidoService {
 	
 	public List<Pedido> getAll();
 	
-	public PedidoDTO insertOrUpdate(PedidoDTO pedidoDto);
-	
-	public boolean remove(int idPedido);
+	public Pedido insert(Pedido pedido);
 	
 	public Optional<Pedido> findById(int id) throws Exception;
+	
+	public List<PedidoDTO> findByProducto(String nombreProducto) throws Exception;;
 }
 

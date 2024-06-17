@@ -4,7 +4,6 @@ import java.util.List;
 
 import java.util.Optional;
 
-import com.oo2.grupo28.entities.Producto;
 import com.oo2.grupo28.entities.Stock;
 import com.oo2.grupo28.dtos.StockDTO;
 

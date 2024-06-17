@@ -32,23 +32,23 @@ public class Producto {
 	@JoinColumn(name="stock_id", nullable=false)
 	private Stock stock;
 
-	public Producto(int id, String nombre, double precio, String codigo, boolean activo) {
+	public Producto(int id, String nombre, double precio, String codigo, boolean activo, Stock stock) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.codigo = codigo;
 		this.activo = activo;
-		this.stock = null;
+		this.stock = stock;
 	}
 
-	public Producto(String nombre, double precio, String codigo, boolean activo) {
+	public Producto(String nombre, double precio, String codigo, boolean activo, Stock stock) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
 		this.codigo = codigo;
 		this.activo = activo;
-		this.stock = null;
+		this.stock = stock;
 	}
 	
 }
