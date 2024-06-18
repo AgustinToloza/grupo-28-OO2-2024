@@ -24,7 +24,6 @@ public class ReporteController {
 	private ILoteService loteService;
 	private IStockService stockService;
 	
-
 	public ReporteController(ILoteService loteService, IStockService stockService) {
 		super();
 		this.loteService = loteService;
