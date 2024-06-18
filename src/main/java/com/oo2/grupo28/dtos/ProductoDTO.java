@@ -2,6 +2,7 @@ package com.oo2.grupo28.dtos;
 
 import com.oo2.grupo28.entities.Stock;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -18,6 +19,7 @@ public class ProductoDTO {
 	private String nombre;
 	
 	@NotNull(message = "El precio es obligatorio")
+	@Min(value = 0, message = "El precio debe ser mayor o igual a 0")
 	private double precio;
 	
 	@NotBlank(message = "El código es obligatorio")
