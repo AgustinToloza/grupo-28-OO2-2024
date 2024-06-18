@@ -72,4 +72,12 @@ public class PedidoService implements IPedidoService{
 				.map(pedido -> modelMapper.map(pedido, PedidoDTO.class))
 				.collect(Collectors.toList());
 	}
+	
+	@Override
+	public List<PedidoDTO> findByProducto(int id){
+		return pedidoRepository.findByProducto(id)
+				.stream()
+				.map(pedido -> modelMapper.map(pedido, PedidoDTO.class))
+				.collect(Collectors.toList());
+	}
 }

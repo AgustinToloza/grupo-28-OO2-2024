@@ -20,5 +20,7 @@ public interface IPedidoService {
 	public Optional<Pedido> findById(int id) throws Exception;
 	
 	public List<PedidoDTO> findByProducto(String nombreProducto) throws Exception;;
+	
+	public List<PedidoDTO> findByProducto(int id) throws Exception;
 }
 

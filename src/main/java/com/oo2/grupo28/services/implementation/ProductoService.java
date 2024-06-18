@@ -8,9 +8,13 @@ import java.util.stream.Collectors;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import com.oo2.grupo28.entities.Lote;
+import com.oo2.grupo28.entities.Pedido;
 import com.oo2.grupo28.entities.Producto;
 import com.oo2.grupo28.entities.Stock;
 import com.oo2.grupo28.dtos.ProductoDTO;
+import com.oo2.grupo28.repositories.ILoteRepository;
+import com.oo2.grupo28.repositories.IPedidoRepository;
 import com.oo2.grupo28.repositories.IProductoRepository;
 import com.oo2.grupo28.repositories.IStockRepository;
 import com.oo2.grupo28.services.IProductoService;
@@ -24,11 +28,17 @@ public class ProductoService implements IProductoService{
 	
 	private IStockRepository stockRepository;
 	
+	private IPedidoRepository pedidoRepository;
+	
+	private ILoteRepository loteRepository;
+	
 	private ModelMapper modelMapper = new ModelMapper();
 
-	public ProductoService(IProductoRepository productoRepository, IStockRepository stockRepository) {
+	public ProductoService(IProductoRepository productoRepository, IStockRepository stockRepository, IPedidoRepository pedidoRepository, ILoteRepository loteRepository) {
 		this.productoRepository = productoRepository;
 		this.stockRepository = stockRepository;
+		this.pedidoRepository = pedidoRepository;
+		this.loteRepository = loteRepository;
 	}
 	
 	@Override
@@ -63,8 +73,23 @@ public class ProductoService implements IProductoService{
 	public boolean remove(int idProducto) {
 		boolean seBorro = false;
 		if(productoRepository.findById(idProducto).isPresent()) {
-			productoRepository.deleteById(idProducto);
+			
+			Producto producto = productoRepository.findById(idProducto).get();
+			
+			// SE ELIMINAN LOS LOTES RELACIONADOS AL PRODUCTO
+			for(Lote l: loteRepository.findByProducto(idProducto)) {
+				loteRepository.deleteById(l.getId());
+			}
+			
+			// SE ELIMINAN LOS PEDIDOS RELACIONADOS AL PRODUCTO
+			for(Pedido p: pedidoRepository.findByProducto(idProducto)) {
+				pedidoRepository.deleteById(p.getId());
+			}
+			
+			stockRepository.deleteById(producto.getStock().getId()); // SE ELIMINA EL STOCK RELACIONADO AL PRODUCTO
+			productoRepository.deleteById(idProducto); // SE ELIMINA EL PRODUCTO
 			seBorro = true;
+			
 		}
 		return seBorro;
 	}

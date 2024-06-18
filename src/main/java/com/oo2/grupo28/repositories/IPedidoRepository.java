@@ -14,8 +14,13 @@ public interface IPedidoRepository extends JpaRepository<Pedido, Serializable>{
 	
 	public abstract Optional<Pedido> findById(int id);
 	
-	// Todas las personas que tengan un título con ese nombre (parámetro name)
+	// Todas las pedidos que tengan un producto con ese nombre (parámetro name)
 	@Query("SELECT pe FROM Pedido pe JOIN FETCH pe.producto pr WHERE pr.nombre = (:nombreProducto)")
 	public abstract List<Pedido> findByProducto(String nombreProducto);
+	
+	// Todas las pedidos que tengan un producto con ese id (parámetro id)
+	@Query("SELECT pe FROM Pedido pe JOIN FETCH pe.producto pr WHERE pr.id = (:id)")
+	public abstract List<Pedido> findByProducto(int id);
+	
 }
 
