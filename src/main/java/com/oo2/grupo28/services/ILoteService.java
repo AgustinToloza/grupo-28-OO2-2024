@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.oo2.grupo28.dtos.LoteDTO;
-import com.oo2.grupo28.dtos.PedidoDTO;
 import com.oo2.grupo28.entities.Lote;
 
 public interface ILoteService {

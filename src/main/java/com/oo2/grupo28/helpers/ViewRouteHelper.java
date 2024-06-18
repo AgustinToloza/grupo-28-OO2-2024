@@ -43,7 +43,7 @@ public class ViewRouteHelper {
 	//REPORTE
 	public final static String REPORTE_INDEX = "reporte/index";
 	public final static String REPORTE_STOCK = "reporte/stock";
-	public final static String REPORTE_GENERAL = "reporte/general";
+	public final static String REPORTE_LOTE = "reporte/lote";
 	
 	//USER
 	public final static String USER_LOGIN = "user/login";

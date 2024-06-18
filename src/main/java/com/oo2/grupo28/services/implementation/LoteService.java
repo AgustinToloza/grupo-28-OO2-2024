@@ -9,7 +9,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 import com.oo2.grupo28.dtos.LoteDTO;
-import com.oo2.grupo28.dtos.PedidoDTO;
 import com.oo2.grupo28.entities.Lote;
 import com.oo2.grupo28.entities.Producto;
 import com.oo2.grupo28.repositories.ILoteRepository;
