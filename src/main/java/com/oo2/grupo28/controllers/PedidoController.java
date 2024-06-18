@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.oo2.grupo28.dtos.PedidoDTO;
+import com.oo2.grupo28.entities.Lote;
 import com.oo2.grupo28.entities.Pedido;
 import com.oo2.grupo28.helpers.ViewRouteHelper;
 import com.oo2.grupo28.services.IPedidoService;
@@ -48,19 +49,30 @@ public class PedidoController {
 		return mAV;
 	}
 	
-	@PostMapping("/new")
-	public String create(@Valid @ModelAttribute("pedido") PedidoDTO pedidoDTO, BindingResult bindingResult, Model model) {
+	@PostMapping("/new_pedido")
+	public String createPedido(@Valid @ModelAttribute("pedido") PedidoDTO pedidoDTO, BindingResult bindingResult, Model model) {
 		if(bindingResult.hasErrors()) {
-			// Si hay errores de validación, vuelve a mostrar el formulario con los errores
 			model.addAttribute("pedido", pedidoDTO);
 	        return ViewRouteHelper.PEDIDO_NEW;
 		}
 		
-		// Si no hay errores, procede con la inserción/actualización del pedido
 		Pedido pedido = modelMapper.map(pedidoDTO, Pedido.class);
 		pedidoService.insert(pedido);
 	    
-	    // Redirige a la vista principal de pedidos después de guardar correctamente
+	    return "redirect:" + ViewRouteHelper.PEDIDO_ROOT;
+	}
+	
+	@PostMapping("/new_lote/{id}")
+	public String createLote(@PathVariable("id") int id, @ModelAttribute("pedido") PedidoDTO pedidoDTO, BindingResult bindingResult, Model model) throws Exception {
+		
+		Pedido pedido = modelMapper.map(pedidoService.findById(id).get(), Pedido.class);
+	    
+		Lote lote = pedidoService.insertLote(pedido);
+		
+		pedido.setLote(lote);
+		pedidoService.update(pedido);
+	    
+	    
 	    return "redirect:" + ViewRouteHelper.PEDIDO_ROOT;
 	}
 	

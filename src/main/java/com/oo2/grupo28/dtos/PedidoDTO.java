@@ -1,5 +1,6 @@
 package com.oo2.grupo28.dtos;
 
+import com.oo2.grupo28.entities.Lote;
 import com.oo2.grupo28.entities.Producto;
 
 import jakarta.validation.constraints.Min;
@@ -19,14 +20,20 @@ public class PedidoDTO {
 	@Min(1)
 	private int cantidadPedida;
 	
+	private boolean dadoAlta;
+	
 	private Producto producto;
+	
+	private Lote lote;
 
-	public PedidoDTO(int id, String proveedor, int cantidadPedida, Producto producto){
+	public PedidoDTO(int id, String proveedor, int cantidadPedida, Producto producto, Lote lote){
 		super();
 		this.setId(id);
 		this.proveedor = proveedor;
 		this.cantidadPedida = cantidadPedida;
 		this.producto = producto;
+		this.lote = lote;
+		this.dadoAlta = false;
 	}
 	
 }

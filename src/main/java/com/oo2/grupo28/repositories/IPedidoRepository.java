@@ -8,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.oo2.grupo28.entities.Pedido;
-import com.oo2.grupo28.entities.Stock;
 
 @Repository("pedidoRepository")
 public interface IPedidoRepository extends JpaRepository<Pedido, Serializable>{

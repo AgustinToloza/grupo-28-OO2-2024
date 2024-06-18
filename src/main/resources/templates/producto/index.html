@@ -16,7 +16,7 @@
 <body>
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Gestión de Productos</a>
+        <a class="navbar-brand">Gestión de Productos</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -45,7 +45,7 @@
 
     <!-- Contenedor principal -->
     <div class="container">
-        <h2 class="mt-4">Lista de Productos</h2>
+        <h2 class="mt-4 mb-4">Lista de Productos</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -64,7 +64,7 @@
                     <td th:text="${producto.codigo}">Código del Producto</td>
 					<td th:text="${producto.activo ? 'PRODUCTO ACTIVO: El producto se puede comprar' : 'PRODUCTO NO ACTIVO: El producto no se puede comprar'}">
 					</td>
-                    <td class="table-buttons">
+                   	<td class="table-buttons">
                         <a href="#" th:href="@{/productos/update/{id}(id=${producto.id})}" class="btn btn-primary btn-sm">Editar</a>
 						<form th:action="@{/productos/delete/{id}(id=${producto.id})}" method="post" style="display: inline;">
 							<button type="submit" class="btn btn-danger btn-sm">Borrar</button>

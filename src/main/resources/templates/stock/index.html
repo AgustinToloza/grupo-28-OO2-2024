@@ -27,7 +27,7 @@
 <body>
     <!-- Barra de navegación -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Gestión de Stocks</a>
+        <a class="navbar-brand">Gestión de Stocks</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,14 +53,14 @@
 
     <!-- Contenedor principal -->
     <div class="container">
-        <h2 class="mt-4">Ver Stocks</h2>
+        <h1 class="mt-4 mb-4">Ver Stocks</h1>
 
         <!-- Stocks Disponibles -->
-        <div>
-            <h3>Stocks Disponibles</h3>
+        <div class=" shadow p-3 mb-5 bg-success rounded">
+            <h3 class="mb-3">Stocks Disponibles</h3>
             <div th:each="stock : ${stocks}">
                 <div th:if="${stock.cantidadActual >= stock.cantidadCritica}" class="card">
-                    <div class="card-body">
+                    <div class="card-body bg-body">
                         <h5 class="card-title" th:text="${stock.producto.nombre}"></h5>
                         <p class="card-text">
                             <strong>Precio:</strong> <span th:text="${stock.producto.precio}"></span><br>
@@ -76,8 +76,8 @@
         </div>
 
         <!-- Stocks Con Pocas Unidades -->
-        <div>
-            <h3>Stocks Con Pocas Unidades</h3>
+        <div class="shadow p-3 mb-5 bg-warning rounded">
+            <h3 class="mb-3">Stocks Con Pocas Unidades</h3>
             <div th:each="stock : ${stocks}">
                 <div th:if="${stock.cantidadActual >= stock.cantidadCritica - 3 && stock.cantidadActual < stock.cantidadCritica}" class="card">
                     <div class="card-body">
@@ -90,15 +90,15 @@
                             <strong>Cantidad Crítica:</strong> <span th:text="${stock.cantidadCritica}"></span><br>
                             <strong>Alerta de Reabastecimiento:</strong> <span th:text="${stock.alertaReabastecimiento ? 'Sí' : 'No'}"></span>
                         </p>
-                        <button class="btn btn-warning">Alta de Pedido</button>
+                        <button class="btn btn-warning"><a class="nav-link" href="/pedidos/new">Hacer Pedido</a></button>
                     </div>
                 </div>
             </div>
         </div>
 
         <!-- Stocks No Disponibles -->
-        <div>
-            <h3>Stocks No Disponibles</h3>
+        <div class="shadow p-3 mb-5 bg-danger rounded">
+            <h3 class="mb-3">Stocks No Disponibles</h3>
             <div th:each="stock : ${stocks}">
                 <div th:if="${stock.cantidadActual < stock.cantidadCritica}" class="card">
                     <div class="card-body">
@@ -111,11 +111,11 @@
                             <strong>Cantidad Crítica:</strong> <span th:text="${stock.cantidadCritica}"></span><br>
                             <strong>Alerta de Reabastecimiento:</strong> <span th:text="${stock.alertaReabastecimiento ? 'Sí' : 'No'}"></span>
                         </p>
-                        <button class="btn btn-danger"><a class="nav-link" href="/pedidos/">Reabastecer</a></button>
+                        <button class="btn btn-danger"><a class="nav-link" href="/pedidos/new">Reabastecer</a></button>
                     </div>
                 </div>
             </div>
-        </div>
+        </di>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
