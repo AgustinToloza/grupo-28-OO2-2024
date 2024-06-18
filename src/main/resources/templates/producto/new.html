@@ -96,13 +96,13 @@
                     <input type="text" id="codigo" class="form-control" th:field="*{codigo}" />
                     <p th:if="${#fields.hasErrors('codigo')}" th:errors="*{codigo}" class="text-danger">Código tiene errores</p>
                 </div>
-                <div class="form-group">
-                    <label for="activo" class="form-label">Estado:</label>
-                    <select id="activo" class="form-control" th:field="*{activo}">
-                        <option value="true">Activo</option>
-                        <option value="false">No Activo</option>
-                    </select>
-                </div>
+				<div class="form-group">
+				    <label for="activo" class="form-label">Estado:</label>
+				    <select id="activo" class="form-control" th:field="*{activo}" disabled>
+				        <option value="false" selected>No Activo</option>
+				    </select>
+				    <input type="hidden" id="activo" th:field="*{activo}" value="false">
+				</div>
                 <div class="form-group d-flex justify-content-between">
                     <button type="submit" class="btn btn-primary btn-submit">Guardar Producto</button>
                     <a href="/productos/" class="btn btn-secondary btn-back">Volver al Inicio</a>

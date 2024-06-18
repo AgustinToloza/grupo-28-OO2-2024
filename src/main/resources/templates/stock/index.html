@@ -59,7 +59,7 @@
         <div class=" shadow p-3 mb-5 bg-success rounded">
             <h3 class="mb-3">Stocks Disponibles</h3>
             <div th:each="stock : ${stocks}">
-                <div th:if="${stock.cantidadActual >= stock.cantidadCritica}" class="card">
+                <div th:if="${stock.cantidadActual > stock.cantidadCritica + 3}" class="card">
                     <div class="card-body bg-body">
                         <h5 class="card-title" th:text="${stock.producto.nombre}"></h5>
                         <p class="card-text">
@@ -79,7 +79,7 @@
         <div class="shadow p-3 mb-5 bg-warning rounded">
             <h3 class="mb-3">Stocks Con Pocas Unidades</h3>
             <div th:each="stock : ${stocks}">
-                <div th:if="${stock.cantidadActual >= stock.cantidadCritica && stock.cantidadActual < stock.cantidadCritica + 3}" class="card">
+                <div th:if="${stock.cantidadActual >= stock.cantidadCritica && stock.cantidadActual <= stock.cantidadCritica + 3}" class="card">
                     <div class="card-body">
                         <h5 class="card-title" th:text="${stock.producto.nombre}"></h5>
                         <p class="card-text">
