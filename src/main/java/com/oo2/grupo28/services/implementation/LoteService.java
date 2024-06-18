@@ -1,5 +1,6 @@
 package com.oo2.grupo28.services.implementation;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import java.util.Optional;
@@ -60,6 +61,14 @@ public class LoteService implements ILoteService{
 	@Override
 	public List<LoteDTO> findByProducto(int id){
 		return loteRepository.findByProducto(id)
+				.stream()
+				.map(lote -> modelMapper.map(lote, LoteDTO.class))
+				.collect(Collectors.toList());
+	}
+	
+	@Override
+	public List<LoteDTO> findByFecha(LocalDate fecha){
+		return loteRepository.findByFecha(fecha)
 				.stream()
 				.map(lote -> modelMapper.map(lote, LoteDTO.class))
 				.collect(Collectors.toList());

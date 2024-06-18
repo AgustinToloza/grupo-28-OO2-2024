@@ -1,5 +1,6 @@
 package com.oo2.grupo28.services;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -16,4 +17,6 @@ public interface ILoteService {
 	public Optional<Lote> findById(int id) throws Exception;
 	
 	public List<LoteDTO> findByProducto(int id) throws Exception;
+	
+	public List<LoteDTO> findByFecha(LocalDate fecha) throws Exception;
 }
