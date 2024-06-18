@@ -8,7 +8,7 @@
 
 3- Configurar el archivo application.yml con el user y la contraseña de su workbench. Luego de la primer ejecucion del proyecto, cambiar la linea "ddl-auto: create" a "ddl-auto: update".
 
-4- Ejecutar el proyecto (El admin y cliente se insertan). 
+4- Ejecutar el proyecto (El admin y user se insertan al ejecutar). 
 
 6- Ahora si, ejecutar el proyecto
 
@@ -16,7 +16,7 @@ Las usuarios y contraseñas son:
 
 admin -> admin
 
-cliente -> cliente
+user -> user
 
 # Sistema de Stock
 
