@@ -88,12 +88,12 @@
                 </div>
                 <div class="form-group">
                     <label for="precio" class="form-label">Cantidad Pedida:</label>
-                    <input type="number" id="cantidadPedida" class="form-control" th:field="*{cantidadPedida}" placeholder="Selecciones la cantidad"/>
+                    <input type="number" id="cantidadPedida" class="form-control" th:field="*{cantidadPedida}" placeholder="Selecciones la cantidad" min="1"/>
                     <p th:if="${#fields.hasErrors('cantidadPedida')}" th:errors="*{cantidadPedida}" class="text-danger">Cantidad Pedida tiene errores</p>
                 </div>
                	<div class="form-group">
                     <label for="producto" class="form-label">ID Producto:</label>
-                    <input type="number" id="producto" class="form-control" th:field="*{producto.id}" placeholder="Seleccione ID del Producto"/>
+                    <input type="number" id="producto" class="form-control" th:field="*{producto.id}" placeholder="Seleccione ID del Producto" min="1"/>
                 </div> 
                 <div class="form-group d-flex justify-content-between">
                     <button type="submit" class="btn btn-primary btn-submit">Guardar Pedido</button>
