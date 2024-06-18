@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Reportes</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            margin-top: 20px;
+        }
+        .card {
+            margin-bottom: 20px;
+        }
+        .btn-primary {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand">Informes disponibles</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/home/index">Volver a Home</a>
+                </li>
+            </ul>
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/logout">Cerrar Sesión</a>
+				</li>
+			</ul>
+        </div>
+    </nav>
+    
+    <!-- Contenedor principal -->
+    <div class="container align-items-center d-flex justify-content-around text-light">
+    
+        <div class="w-100 card bg-dark shadow p-3 mb-5 bg-body rounded mr-5">
+  			<div class="card-header border-bottom border-body">
+    			<h5> Reporte de Stock </h5>
+  			</div>
+  			<div class="card-body">
+    			<p class="card-text">Informe de cantidad de stock de un producto</p>
+    			<a href="#" class="btn btn-primary">Informe</a>
+  			</div>
+		</div>
+		
+		<div class="w-100 card bg-dark shadow p-3 mb-5 bg-body rounded ml-5">
+  			<div class="card-header border-bottom border-body">
+    			<h5> Reporte de Lote </h5>
+  			</div>
+  			<div class="card-body">
+    			<p class="card-text">Informe de lotes por fecha</p>
+    			<a href="/reportes/lote" class="btn btn-primary">Informe</a>
+  			</div>
+		</div>
+        
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
