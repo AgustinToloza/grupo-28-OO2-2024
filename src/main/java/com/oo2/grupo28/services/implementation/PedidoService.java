@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.oo2.grupo28.entities.Pedido;
 import com.oo2.grupo28.dtos.PedidoDTO;
 import com.oo2.grupo28.entities.Lote;
+import com.oo2.grupo28.repositories.ILoteRepository;
 import com.oo2.grupo28.repositories.IPedidoRepository;
 import com.oo2.grupo28.services.ILoteService;
 import com.oo2.grupo28.services.IPedidoService;
@@ -23,11 +24,13 @@ public class PedidoService implements IPedidoService{
 	
 	private IPedidoRepository pedidoRepository;
 	private ILoteService loteService;
+	private ILoteRepository loteRepository;
 	
 	private ModelMapper modelMapper = new ModelMapper();
 
-	public PedidoService(IPedidoRepository pedidoRepository, ILoteService loteService) {
+	public PedidoService(IPedidoRepository pedidoRepository, ILoteRepository loteRepository, ILoteService loteService) {
 		this.pedidoRepository = pedidoRepository;
+		this.loteRepository = loteRepository;
 		this.loteService = loteService;
 	}
 	
@@ -38,14 +41,23 @@ public class PedidoService implements IPedidoService{
 	
 	@Transactional
 	public Pedido insert(Pedido pedido) {
-		Pedido pedidoInsertar = pedidoRepository.save(pedido);
+		return pedidoRepository.save(pedido);
+	}
+	
+	@Transactional
+	public Lote insertLote(Pedido pedido) {
 		
-		Lote lote = new Lote(LocalDate.now(), pedidoInsertar.getCantidadPedida(), pedidoInsertar.getProducto(), pedidoInsertar);
+		Lote lote = new Lote(LocalDate.now(), pedido.getCantidadPedida(), pedido.getProducto(), pedido);
 		
 		loteService.insert(lote);
-		pedidoInsertar.setLote(lote);
 		
-		return pedidoRepository.save(pedidoInsertar);
+		return loteRepository.save(lote);
+	}
+	
+	@Override
+	public Pedido update(Pedido pedido) {
+		pedido.setDadoAlta(true);
+		return pedidoRepository.save(pedido);
 	}
 	
 	@Override

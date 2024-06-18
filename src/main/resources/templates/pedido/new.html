@@ -80,7 +80,7 @@
     <div class="container">
         <h2 class="mt-4">Crear Pedidos</h2>
         <div class="form-container">
-            <form action="#" th:action="@{/pedidos/new}" th:object="${pedido}" method="post">
+            <form action="#" th:action="@{/pedidos/new_pedido}" th:object="${pedido}" method="post">
                 <div class="form-group">
                     <label for="nombre" class="form-label">Proveedor:</label>
                     <input type="text" id="proveedor" class="form-control" th:field="*{proveedor}" placeholder="Selecciones un proveedor"/>

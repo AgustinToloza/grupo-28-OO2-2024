@@ -22,6 +22,8 @@ public class Pedido {
 	private String proveedor;
 
 	private int cantidadPedida;
+	
+	private boolean dadoAlta;
 
 	@ManyToOne
 	@JoinColumn(name="producto_id")
@@ -41,6 +43,7 @@ public class Pedido {
 		this.cantidadPedida = cantidadPedida;
 		this.producto = producto;
 		this.usuario = usuario;
+		this.dadoAlta = false;
 	}
 
 	public Pedido(String proveedor, int cantidadPedida, Producto producto, User usuario, Lote lote) {
@@ -49,6 +52,7 @@ public class Pedido {
 		this.cantidadPedida = cantidadPedida;
 		this.producto = producto;
 		this.usuario = usuario;
+		this.dadoAlta = false;
 	}
 	
 }

@@ -36,14 +36,14 @@
 
     <!-- Contenedor principal -->
     <div class="container">
-        <h2 class="mt-4">Lista de Pedidos</h2>
+        <h2 class="mt-4 mb-4">Lista de Pedidos</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
                 	<th>Producto</th>
                     <th>Proovedor</th>
                     <th>Cantidad Pedida</th>
-                    <th>Fecha Lote</th>
+                    <th>Lote</th>
                 </tr>
             </thead>
             <tbody>
@@ -51,12 +51,21 @@
                 	<td th:text="${pedido.producto.nombre}">ID del Producto</td>
                     <td th:text="${pedido.proveedor}">Proveedor del Pedido</td>
                     <td th:text="${pedido.cantidadPedida}">0.00</td>
-                    <td th:text="${pedido.lote.fechaRecepcion}">Fecha del Lote</td>
+                    <span th:switch="${pedido.dadoAlta}">
+					  	<td th:case="false" class="table-buttons">
+                        	<form th:action="@{/pedidos/new_lote/{id}(id=${pedido.id})}" method="post" style="display: inline;">
+								<button type="submit" class="btn btn-danger btn-sm">Pedir Lote</button>
+							</form>
+                    	</td>
+					  	<td th:case="true" class="table-buttons">
+                        	<button class="btn btn-success" disabled>Lote pedido</button>
+                    	</td>
+					</span>
                 </tr>
             </tbody>
         </table>
     </div>
-
+    
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

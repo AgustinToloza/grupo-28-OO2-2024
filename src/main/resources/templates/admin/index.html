@@ -39,7 +39,6 @@
 								<input class="dropdown-item" style="cursor: pointer"
 									type="submit" value="Logout" />
 							</form>
-							<a class="dropdown-item" href="/person">CRUD Person</a>
 						</div></li>
 				</ul>
 			</div>
@@ -88,17 +87,7 @@
 			</a>
 		</div>
 	</header>
-	<!-- Page Content -->
-	<div class="container">
-		<h1 class="my-2">Vistas de personas</h1>
-		<select class="my-4" id="select-person">
-			<option>...</option>
-			<option th:each="person : ${persons}" th:value="${person.id}">
-				<p th:text="${person.name}"/>
-			</option>
-		</select>
-		<div id="div-select-person" class="row"></div>
-	</div>
+	
 	<footer class="py-5 bg-dark">
 		<div class="container">
 			<p class="m-0 text-center text-white">Copyright &copy; Your
