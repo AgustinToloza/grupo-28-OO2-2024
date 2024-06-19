@@ -4,14 +4,17 @@
 
 1- Crear la base de datos grupo28sistema
 
-2- Descargarse el proyecto y, en la consola, moverse hasta la carpeta donde se encuentra y ejecutar el comando "mvn clean install"
+2- Descargarse el proyecto e importarlo en el Spring Tool Suite, específicamente Maven: Existing Maven Projects
 
-3- Configurar el archivo application.yml con el user y la contraseña de su workbench. Luego de la primer ejecucion del proyecto, cambiar la linea "ddl-auto: create" a "ddl-auto: update".
+3- En la consola, moverse hasta la carpeta donde se encuentra y ejecutar el comando "mvn clean install"
 
-4- Ejecutar el proyecto (El admin y user se insertan al ejecutar). 
+4- Configurar el archivo application.yml con la URL, Username y Password de su workbench o configurar desde Run Configurations, Environment agregando las variables de entorno.
+URL: jdbc:mysql://localhost/grupo28sistema?serverTimezone=UTC
+Luego de la primer ejecucion del proyecto, cambiar la linea "ddl-auto: create" a "ddl-auto: update".
 
-6- Ahora si, ejecutar el proyecto
+5- Ejecutar el proyecto (El admin y user se insertan al ejecutar).
 
+6- Ahora si, ejecutar el proyecto.
 Las usuarios y contraseñas son:
 
 admin -> admin
