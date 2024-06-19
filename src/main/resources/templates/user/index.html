@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>User Dashboard</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+	<meta charset="UTF-8">
+	<title>Vista de Usuario</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -25,37 +26,42 @@
         </div>
     </nav>
 
-    <div class="container mt-5">
-        <h1>Productos Disponibles</h1>
-        <div class="row">
-            <div class="col-12">
-                <div th:each="producto : ${productos}">
-                    <div class="card mb-3">
-                        <div class="card-body">
-                            <h5 class="card-title" th:text="${producto.nombre}">Nombre del Producto</h5>
-                            <p class="card-text">
-                                Código: <span th:text="${producto.codigo}">Código del Producto</span><br>
-                                Precio: $<span th:text="${producto.precio}">Precio del Producto</span><br>
-                                Cantidad Disponible: <span th:text="${producto.stock.cantidadActual}">Cantidad Disponible</span>
-                            </p>
-                            <p class="card-text" th:if="${producto.activo}">
-                                <span class="text-success">El producto está disponible para comprar</span>
-                                <form th:action="@{/user/comprar/{id}(id=${producto.id})}" method="post">
-                                    <div class="form-group">
-                                        <label for="cantidad">Cantidad:</label>
-                                        <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" max="[[${producto.stock.cantidadActual}]]" required>
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Comprar</button>
-                                </form>
-                            </p>
-                            <p class="card-text" th:if="${!producto.activo}">
-                                <span class="text-danger">El producto no está disponible para comprar</span>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</body>
+	<div class="container mt-4">
+	        <h1>Productos Disponibles</h1>
+			
+			<div th:if="${error}" class="alert alert-danger" role="alert">
+				<span th:text="${error}"></span>
+			</div>
+			        
+			<div th:if="${success}" class="alert alert-success" role="alert">
+				<span th:text="${success}"></span>
+			</div>
+					
+	        <div class="row">
+	            <div class="col-md-4" th:each="producto : ${productos}">
+	                <div class="card mb-4">
+	                    <div class="card-body">
+	                        <h5 class="card-title" th:text="${producto.nombre}"></h5>
+	                        <p class="card-text">
+	                            <strong>Precio:</strong> <span th:text="${producto.precio}"></span><br>
+	                            <strong>Código:</strong> <span th:text="${producto.codigo}"></span><br>
+	                            <strong>Cantidad Actual:</strong> <span th:text="${producto.stock.cantidadActual}"></span><br>
+	                            <strong>Estado:</strong>
+	                            <span th:if="${producto.activo}" th:text="'El producto está disponible para comprar'"></span>
+	                            <span th:if="${!producto.activo}" th:text="'El producto no está disponible para comprar'"></span>
+	                        </p>
+	                        <form th:if="${producto.activo}" action="/compras/comprar" method="post">
+	                            <div class="form-group">
+	                                <label for="cantidad">Cantidad:</label>
+	                                <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" required>
+	                            </div>
+	                            <input type="hidden" name="productoId" th:value="${producto.id}">
+	                            <button type="submit" class="btn btn-primary">Comprar</button>
+	                        </form>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	    </div>
+	</body>
 </html>

@@ -13,25 +13,29 @@ import lombok.Setter;
 
 @Getter @Setter @NoArgsConstructor
 public class CompraDTO {
+	
 	private int id;
-private LocalDate fechaCompra;
+	
+	private LocalDate fechaCompra;
 	
 	private int cantidadComprada;
 	
 	private double precioVenta;
-	private Set<Producto> productos=new HashSet<>();
+	
+	private Producto producto;
+	
 	private User user;
-	public CompraDTO(int id, LocalDate fechaCompra, int cantidadComprada, double precioVenta, Set<Producto> productos,
+	
+	public CompraDTO(int id, LocalDate fechaCompra, int cantidadComprada, double precioVenta, Producto producto,
 			User user) {
 		super();
 		this.setId(id);
 		this.fechaCompra = fechaCompra;
 		this.cantidadComprada = cantidadComprada;
 		this.precioVenta = precioVenta;
-		this.productos = productos;
+		this.producto = producto;
 		this.user = user;
 	}
-	
 	
 
 }

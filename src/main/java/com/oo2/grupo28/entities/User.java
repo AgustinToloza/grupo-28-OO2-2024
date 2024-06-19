@@ -41,10 +41,10 @@ public class User {
 
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
 	private Set<UserRole> userRoles = new HashSet<>();
-	
+	/*
 	@OneToMany(fetch=FetchType.LAZY, mappedBy="user")
 	private Set<Compra> compras = new HashSet<>();
-	
+	*/
 
 	public User(String username, String password, boolean enabled) {
 		this.username = username;
@@ -52,12 +52,12 @@ public class User {
 		this.enabled = enabled;
 	}
 
-	public User(String username, String password, boolean enabled, Set<UserRole> userRoles, Set<Compra> compras) {
+	public User(String username, String password, boolean enabled, Set<UserRole> userRoles) {
 		this.username = username;
 		this.password = password;
 		this.enabled = enabled;
 		this.userRoles = userRoles;
-		this.compras = compras;
+		
 	}
 	
 }

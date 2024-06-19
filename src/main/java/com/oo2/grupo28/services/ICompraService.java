@@ -11,9 +11,12 @@ import com.oo2.grupo28.entities.Compra;
 
 public interface ICompraService {
 
+
 	public List<Compra> getAll();
 	
 	public CompraDTO insertOrUpdate(CompraDTO compraModel);
+	
+	public Compra insert(Compra compra);
 	
 	public boolean remove(int idCompra);
 	

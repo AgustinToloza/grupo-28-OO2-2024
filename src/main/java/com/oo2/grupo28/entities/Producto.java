@@ -1,5 +1,7 @@
 package com.oo2.grupo28.entities;
 
+import java.util.Set;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -7,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,6 +34,9 @@ public class Producto {
 	@OneToOne(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
 	@JoinColumn(name="stock_id", nullable=false)
 	private Stock stock;
+	
+	@OneToMany(mappedBy = "producto", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<Compra> compras;
 
 	public Producto(int id, String nombre, double precio, String codigo, boolean activo, Stock stock) {
 		super();
@@ -41,14 +47,26 @@ public class Producto {
 		this.activo = activo;
 		this.stock = stock;
 	}
+	
+	public Producto(int id, String nombre, double precio, String codigo, boolean activo, Stock stock, Set<Compra> compras) {
+		super();
+		this.id = id;
+		this.nombre = nombre;
+		this.precio = precio;
+		this.codigo = codigo;
+		this.activo = activo;
+		this.stock = stock;
+		this.compras = compras;
+	}
 
-	public Producto(String nombre, double precio, String codigo, boolean activo, Stock stock) {
+	public Producto(String nombre, double precio, String codigo, boolean activo, Stock stock, Set<Compra> compras) {
 		super();
 		this.nombre = nombre;
 		this.precio = precio;
 		this.codigo = codigo;
 		this.activo = activo;
 		this.stock = stock;
+		this.compras = compras;
 	}
 	
 }

@@ -56,5 +56,9 @@ public class ViewRouteHelper {
 	public final static String PEDIDO_ROOT = "/pedidos/";
 	public final static String REPORTE_ROOT = "/reportes/";
 	public final static String VISTA_INFORMES="/vista_informes";
+	public final static String COMPRA_ROOT = "/compras/";
+	
+	
+	
 
 }
