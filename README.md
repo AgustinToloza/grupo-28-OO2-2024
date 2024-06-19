@@ -62,5 +62,6 @@ Se espera que el TP cuente con los siguientes puntos mínimos:
 
 ## **Diagrama de Clases**
 
-![Clase UML](https://github.com/AgustinToloza/grupo-28-OO2-2024/assets/112873958/8ae257b2-156a-428a-8bdf-34bf8f4892ae)
+![DiagramaTPOO2](https://github.com/AgustinToloza/grupo-28-OO2-2024/assets/112873958/39f2ab58-f27c-4275-81a4-9d101f76bb80)
+
 
